@@ -1,0 +1,8 @@
+{
+  "verbose": true,
+  "watch": ["src/public"],
+  "ext": "*",
+  "exec": "npm run copy:public",
+  "polingInterval": 100,
+  "legacyWatch": true
+}

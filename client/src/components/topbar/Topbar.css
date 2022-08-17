@@ -1,0 +1,120 @@
+.nav {
+  margin: 0;
+  position: sticky;
+  background-color: #00232f;
+  width: 100%;
+  height: auto;
+  top: 0;
+  height: 70px;
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+}
+.noBackgroundnavigation {
+  margin: 0px;
+  padding: 20px 0px;
+  /* position: sticky; */
+  /* background-color: #f9c909; */
+  width: 100%;
+  height: auto;
+  top: 0;
+  height: 70px;
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+}
+.topLeft {
+  align-items: flex-start;
+  color: white;
+  flex-direction: column;
+  margin-left: 8em;
+  font-family: "Arima Madurai", cursive;
+  font-size: 35px;
+  /* border: 2px solid #ffa902; */
+  padding-right: 2 0px;
+}
+.yellotxt {
+  color: #ffa902;
+}
+.topCenter ul {
+  /* border: 2px solid darkgreen; */
+  text-decoration: none;
+  display: flex;
+}
+.topCenter ul li {
+  list-style: none;
+  padding: 10px 40px;
+  text-decoration: none;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+}
+.topCenter ul li:visited {
+  text-decoration: none;
+}
+.topCenter {
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  /* justify-content: center; */
+  /* align-items: center; */
+  margin: 0px 20px;
+  /* border: 2px solid #ffa902; */
+}
+.topRight {
+  position: absolute;
+  right: 70px;
+  display: flex;
+  width: fit-content;
+  color: white;
+  padding: 0;
+  /* border: 2px solid rgb(22, 245, 22);s */
+  font-size: 28;
+}
+.yellowtxt {
+  color: #ffa902;
+  font-size: x-large;
+  margin-left: 2em;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 50px;
+  right: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px 20px;
+  width: 150px;
+}
+
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: 20px;
+  height: 20px;
+  width: 20px;
+  background: #fff;
+  transform: rotate(45deg);
+}
+.dropdown-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: 500ms ease;
+}
+
+.dropdown-menu.inactive {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: 500ms ease;
+}
+
+.dropdownItem img {
+  transition: 500ms;
+}

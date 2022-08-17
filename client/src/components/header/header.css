@@ -1,0 +1,56 @@
+.header {
+  width: 100%;
+  padding: 0em 0px;
+  /* text-align: center; */
+}
+.hr {
+  width: 65%;
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+}
+.whitetxt {
+  color: white;
+  font-size: large;
+}
+.title {
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 75px;
+}
+.searchbar {
+  width: 35%;
+  height: 20%;
+  margin: 0px;
+  /* margin-top: 50px; */
+  border-radius: 30px;
+  padding: 15px;
+  border: 2px solid rgb(225, 0, 0);
+}
+::placeholder {
+  width: 600px;
+  padding-left: 0px;
+  font-size: large;
+  text-align: left;
+  align-self: start;
+}
+.search {
+  display: flex;
+
+  flex-direction: row;
+  display: block;
+  margin: auto;
+  text-align: center;
+  background-color: white;
+  width: 35%;
+  /* height: 20%; */
+}
+.searchicon {
+  height: 60px;
+  width: 50px;
+  background-color: white;
+  display: grid;
+  place-items: center;
+  border: 1px solid green;
+}

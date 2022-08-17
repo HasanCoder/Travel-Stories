@@ -1,0 +1,26 @@
+{
+  "name": "nest-react-heroku",
+  "version": "1.0.0",
+  "description": "nest-react-heroku app boilerplate",
+  "main": "server/dist/main.js",
+  "scripts": {
+    "postinstall": "cd client && npm install && npm run build && cd ../server && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathan-folsom/nest-react-heroku.git"
+  },
+  "author": "nate folsom",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nathan-folsom/nest-react-heroku/issues"
+  },
+  "homepage": "https://github.com/nathan-folsom/nest-react-heroku#readme",
+  "engines": {
+    "node": "10.19.0"
+  },
+  "cacheDirectories": [
+    "client/node_modules",
+    "server/node_modules"
+  ]
+}
