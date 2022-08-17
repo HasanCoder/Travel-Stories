@@ -4,7 +4,8 @@
   "description": "nest-react-heroku app boilerplate",
   "main": "server/dist/main.js",
   "scripts": {
-    "postinstall": "cd client && npm install && npm run build && cd ../server && npm install && npm run build"
+    "install": "cd client && npm install && cd ../server && npm install && cd..",
+    "build": "cd client && npm run build && cd ../server && npm run build"
   },
   "repository": {
     "type": "git",
