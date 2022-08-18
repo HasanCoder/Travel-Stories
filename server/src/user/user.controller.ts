@@ -26,6 +26,11 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
+  @Post('/admin')
+  create_Admin(@Body(ValidationPipe) createUserDto: CreateUserDto) {
+    return this.userService.createAdmin(createUserDto);
+  }
+
   @ApiSecurity('JWT-auth')
   @Get()
   @UseGuards(new RoleGuard(Constants.ROLES.ADMIN_ROLE))

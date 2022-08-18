@@ -16,9 +16,9 @@ import { join } from 'path';
     TypeOrmModule.forRoot({
       url: process.env.DATABASE_URL,
       type: 'postgres',
-      // ssl: {
-      //   rejectUnauthorized: false,
-      // },
+      ssl: {
+        rejectUnauthorized: false,
+      },
       synchronize: true, // This for development
       autoLoadEntities: true,
       // useFactory: (configService: ConfigService) => ({
