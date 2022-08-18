@@ -5,8 +5,9 @@ import { getLoginInfo } from "../../utils/LoginInfo.ts";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 
 function Topbar(props) {
-  const role = getLoginInfo().role;
-  const username = getLoginInfo().username;
+  const user = getLoginInfo();
+  const role = user?.role;
+  const username = user?.username;
   const [toggleMenu, setToggleMenu] = useState(false);
   let menuRef = useRef();
   useEffect(() => {

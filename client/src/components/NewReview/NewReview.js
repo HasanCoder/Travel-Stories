@@ -25,83 +25,16 @@ export default function NewReview(props) {
   const [Ratingvalue, setRatingValue] = React.useState(0);
   const [hover, setHover] = React.useState(-1);
   const [imagefiles, setImagefiles] = useState(null);
-  const [uploadImage, setUploadImage] = useState(false);
-  // const [imageUrls, setImageUrls] = useState([]);
 
-  const titleInputRef = useRef();
-  const placeInputRef = useRef();
-  const descriptionInputRef = useRef();
-  const dateInputRef = useRef();
-  const imageInputRef = useRef();
-  const hotelNameInputRef = useRef();
-  const hotelCostInputRef = useRef();
-  const hotelRefInputRef = useRef();
-  const transportNameInputRef = useRef();
-  const transportCostInputRef = useRef();
-  const transportRefInputRef = useRef();
   const formRef = useRef();
 
   const submitHandler = async (event) => {
     event.preventDefault();
     toast.success("Review Submitted Scuessfully");
-    // const enteredTitle = titleInputRef.current.value;
-    // const enteredPlace = placeInputRef.current.value;
-    // const enteredDescription = descriptionInputRef.current.value;
-    // const enteredDate = dateInputRef.current.value;
-    // const enteredImage = imageInputRef.current.files[0];
-    // const enteredhotelName = hotelNameInputRef.current.value;
-    // const enteredhotelCost = parseInt(hotelCostInputRef.current.value);
-    // const enteredhotelRef = hotelRefInputRef.current.value;
-    // const enteredTransportName = transportNameInputRef.current.value;
-    // const enteredTransportRef = transportRefInputRef.current.value;
-    // const enteredTransportCost = parseInt(transportCostInputRef.current.value);
-
-    // const ReviewData = {
-    //   Title: enteredTitle,
-    //   Place: enteredPlace,
-    //   Rating: Ratingvalue,
-    //   Experience: enteredDescription,
-    //   start_date: enteredDate,
-    //   Images: enteredImage,
-    //   Hotel_name: enteredhotelName,
-    //   Hotel_cost: enteredhotelCost,
-    //   Hotel_refno: enteredhotelRef,
-    //   Transport_name: enteredTransportName,
-    //   Transport_refno: enteredTransportRef,
-    //   Transport_cost: enteredTransportCost,
-    // };
-
-    // console.log(imageUrls);
-    // props.onAddReview(ReviewData);
 
     const userId = getLoginInfo()?.userId;
     if (userId !== null) {
-      // console.log(`reviewData :: ${JSON.stringify(ReviewData, null, 4)}`);
-      // console.log(formRef.current);
       const data = new FormData(formRef.current);
-      // console.log(ReviewData);
-      // for (const key in ReviewData) {
-      //   const element = ReviewData[key];
-      //   data.append(key, element);
-      // }
-      // data.append("Title", titleInputRef.current.value);
-      // data.append("Place", placeInputRef.current.value);
-      // data.append("Description", descriptionInputRef.current.value);
-      // data.append("Date", dateInputRef.current.value);
-      // data.append("Image", imageInputRef.current.files[0]);
-      // data.append("hotelName", hotelNameInputRef.current.value);
-      // data.append("hotelCost", parseInt(hotelCostInputRef.current.value));
-      // data.append("hotelRef", hotelRefInputRef.current.value);
-      // data.append("TransportName", transportNameInputRef.current.value);
-      // data.append("TransportRef", transportRefInputRef.current.value);
-      // data.append(
-      //   "TransportCost",
-      //   parseInt(transportCostInputRef.current.value)
-      // );
-      for (const [key, value] of data) {
-        console.log(key, value);
-      }
-      // console.log(data.entries());
       try {
         await fetch(
           (process.env.REACT_APP_BASE_URL
@@ -114,32 +47,12 @@ export default function NewReview(props) {
             body: data,
             headers: {
               Authorization: "Bearer " + localStorage.getItem("token"),
-              // Authorization:
-              //   "Bearer " +
-              //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiaGFzYW4iLCJlbWFpbCI6Imhhc2FuQGdtYWlsLmNvbSIsInJvbGUiOiJOT1JNQUxfVVNFUl9ST0xFIiwiaWF0IjoxNjYwNDA5OTU5LCJleHAiOjE2NjA0MTM1NTl9.4GxT3Qbs49qO71ZnOm0RWWJDpfNHIT6rMuGnKQBRjVs",
-              // "Content-Type": "multipart/form-data; boundary=meri-boundary",
             },
           }
         );
       } catch (error) {
         console.log(error);
       }
-
-      // {
-      //   Title: enteredTitle,
-      //   Place: enteredPlace,
-      //   Rating: Ratingvalue,
-      //   Experience: enteredDescription,
-      //   start_date: enteredDate,
-      //   Images: enteredImage,
-      //   Hotel_name: enteredhotelName,
-      //   Hotel_cost: enteredhotelCost,
-      //   Hotel_refno: enteredhotelRef,
-      //   Transport_name: enteredTransportName,
-      //   Transport_refno: enteredTransportRef,
-      //   Transport_cost: enteredTransportCost,
-      // },
-      // {
     } else {
       toast.info("Sorry you are not authenticated");
     }
@@ -154,43 +67,6 @@ export default function NewReview(props) {
     console.log(imagefiles);
   };
 
-  // const imagesListRef = ref(storage, "images/");
-  // const fileUploadHandler = (event) => {
-  //   if (imagefiles == null) return;
-  //   const imageRef = ref(storage, `images/${imagefiles.name + v4()}`);
-  //   uploadBytes(imageRef, imagefiles).then((snapshot) => {
-  //     getDownloadURL(snapshot.ref).then((url) => {
-  //       setImageUrls((prev) => [...prev, url]);
-  //     });
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   listAll(imagesListRef).then((response) => {
-  //     response.items.forEach((item) => {
-  //       getDownloadURL(item).then((url) => {
-  //         setImageUrls((prev) => [...prev, url]);
-  //       });
-  //     });
-  //   });
-  // }, []);
-
-  // useEffect(() => {
-  //   listAll(imagesListRef).then((listResults) => {
-  //     const promises = listResults.items.map((item) => {
-  //       return item.delete();
-  //     });
-  //     Promise.all(promises);
-  //   });
-  // }, []);
-
-  // const getRatingValue = (enteredRating) => {
-  //   ReviewData = {
-  //     ...ReviewData,
-  //     rating: enteredRating,
-  //   };
-  //   console.log(ReviewData);
-  // };
   return (
     <>
       <form
@@ -211,7 +87,6 @@ export default function NewReview(props) {
               name="Title"
               placeholder="Enter title for your review"
               className="w-[70%] border border-gray-400 px-3 py-2 rounded-lg shadow-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 placeholder:text-md"
-              ref={titleInputRef}
             />
           </div>
           <div className="m-5">
@@ -225,7 +100,6 @@ export default function NewReview(props) {
               name="Place"
               placeholder="Enter the place you have travelled"
               className="w-[70%] border border-gray-400 px-3 py-2 rounded-lg shadow-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-              ref={placeInputRef}
             />
           </div>
           <div className="m-5">
@@ -278,7 +152,6 @@ export default function NewReview(props) {
               rows="10"
               placeholder="Please tell us about your experience of your journey: describe the place or activity, recommendations for travellers?"
               className="w-[70%] border border-gray-400 px-3 py-2 rounded-lg shadow-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-              ref={descriptionInputRef}
             />
           </div>
           <div className="m-5">
@@ -292,7 +165,6 @@ export default function NewReview(props) {
               name="start_date"
               placeholder="Pick the date when you travelled"
               className="w-[70%] border border-gray-400 px-3 py-2 rounded-lg shadow-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-              ref={dateInputRef}
             />
           </div>
           <div className="m-5">
@@ -301,7 +173,7 @@ export default function NewReview(props) {
             </label>
             <input
               type="file"
-              // required
+              required
               multiple
               id="upload"
               name="Images"
@@ -311,20 +183,8 @@ export default function NewReview(props) {
       file:text-sm file:font-semibold
       file:bg-violet-50 file:text-violet-700
       hover:file:bg-violet-100"
-              ref={imageInputRef}
-              // onChange={fileSelectHandler}
             />
-            {/* <button
-              type="button"
-              onClick={fileUploadHandler}
-              className="mt-3 bg-violet-50 text-violet-700 font-semibold text-md rounded-full py-2 px-4 hover:bg-violet-100"
-            >
-              Upload
-            </button> */}
           </div>
-          {/* {imageUrls.map((url) => {
-            return <img src={url} className="w-1/5  m-10" />;
-          })} */}
         </div>
 
         <div className="w-1/2">
@@ -340,7 +200,6 @@ export default function NewReview(props) {
                 name="Hotel_name"
                 placeholder="Name of Hotel"
                 className="w-[70%] border border-gray-400 px-3 py-2 rounded-lg shadow-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                ref={hotelNameInputRef}
               />
             </div>
             <div className="mb-5">
@@ -348,12 +207,11 @@ export default function NewReview(props) {
                 Cost of stay per night
               </label>
               <input
-                type="text"
+                type="number"
                 id="costofstay"
                 name="Hotel_cost"
                 placeholder="Rs"
                 className="w-[70%] border border-gray-400 px-3 py-2 rounded-lg shadow-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                ref={hotelCostInputRef}
               />
             </div>
             <div className="mb-5">
@@ -366,12 +224,8 @@ export default function NewReview(props) {
                 name="Hotel_refno"
                 placeholder="+92"
                 className="w-[70%] border border-gray-400 px-3 py-2 rounded-lg shadow-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                ref={hotelRefInputRef}
               />
             </div>
-            {/* <button className="bg-[#FFA902] hover:bg-[#fac251] text-black p-5 rounded-lg text-lg font-semibold right-1">
-              Add Hotel
-            </button> */}
           </div>
           <div className="m-5 border border-gray-400 p-10 rounded-lg ">
             <h3 className="text-2xl font-bold mb-5">
@@ -387,7 +241,6 @@ export default function NewReview(props) {
                 name="Transport_name"
                 placeholder="Enter name of the transportation service you availed"
                 className="w-[70%] border border-gray-400 px-3 py-2 rounded-lg shadow-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                ref={transportNameInputRef}
               />
             </div>
             <div className="mb-5">
@@ -395,12 +248,11 @@ export default function NewReview(props) {
                 Reference number of transportation service (if any)
               </label>
               <input
-                type="number"
+                type="text"
                 id="reftransport"
                 name="Transport_refno"
                 placeholder="+92"
                 className="w-[70%] border border-gray-400 px-3 py-2 rounded-lg shadow-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                ref={transportRefInputRef}
               />
             </div>
             <div className="mb-5">
@@ -413,12 +265,8 @@ export default function NewReview(props) {
                 name="Transport_cost"
                 placeholder="Rs"
                 className="w-[70%] border border-gray-400 px-3 py-2 rounded-lg shadow-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                ref={transportCostInputRef}
               />
             </div>
-            {/* <button className=" bg-[#FFA902] hover:bg-[#fac251] text-black p-5 rounded-lg text-lg font-semibold mb-5">
-              Add Transportation
-            </button> */}
           </div>
           <button
             type="Submit"

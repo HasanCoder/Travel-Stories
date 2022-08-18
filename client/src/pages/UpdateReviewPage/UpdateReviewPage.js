@@ -41,79 +41,13 @@ export default function UpdateReview(props) {
     getReviewById();
   }, [getReviewById]);
 
-  const titleInputRef = useRef();
-  const placeInputRef = useRef();
-  const descriptionInputRef = useRef();
-  const dateInputRef = useRef();
-  const imageInputRef = useRef();
-  const hotelNameInputRef = useRef();
-  const hotelCostInputRef = useRef();
-  const hotelRefInputRef = useRef();
-  const transportNameInputRef = useRef();
-  const transportCostInputRef = useRef();
-  const transportRefInputRef = useRef();
   const formRef = useRef();
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    // const enteredTitle = titleInputRef.current.value;
-    // const enteredPlace = placeInputRef.current.value;
-    // const enteredDescription = descriptionInputRef.current.value;
-    // const enteredDate = dateInputRef.current.value;
-    // const enteredImage = imageInputRef.current.files[0];
-    // const enteredhotelName = hotelNameInputRef.current.value;
-    // const enteredhotelCost = parseInt(hotelCostInputRef.current.value);
-    // const enteredhotelRef = hotelRefInputRef.current.value;
-    // const enteredTransportName = transportNameInputRef.current.value;
-    // const enteredTransportRef = transportRefInputRef.current.value;
-    // const enteredTransportCost = parseInt(transportCostInputRef.current.value);
-
-    // const ReviewData = {
-    //   Title: enteredTitle,
-    //   Place: enteredPlace,
-    //   Rating: Ratingvalue,
-    //   Experience: enteredDescription,
-    //   start_date: enteredDate,
-    //   Images: enteredImage,
-    //   Hotel_name: enteredhotelName,
-    //   Hotel_cost: enteredhotelCost,
-    //   Hotel_refno: enteredhotelRef,
-    //   Transport_name: enteredTransportName,
-    //   Transport_refno: enteredTransportRef,
-    //   Transport_cost: enteredTransportCost,
-    // };
-
-    // console.log(imageUrls);
-    // props.onAddReview(ReviewData);
-
     const userId = getLoginInfo()?.userId;
     if (userId !== null) {
-      // console.log(`reviewData :: ${JSON.stringify(ReviewData, null, 4)}`);
-      // console.log(formRef.current);
       const data = new FormData(formRef.current);
-      // console.log(ReviewData);
-      // for (const key in ReviewData) {
-      //   const element = ReviewData[key];
-      //   data.append(key, element);
-      // }
-      // data.append("Title", titleInputRef.current.value);
-      // data.append("Place", placeInputRef.current.value);
-      // data.append("Description", descriptionInputRef.current.value);
-      // data.append("Date", dateInputRef.current.value);
-      // data.append("Image", imageInputRef.current.files[0]);
-      // data.append("hotelName", hotelNameInputRef.current.value);
-      // data.append("hotelCost", parseInt(hotelCostInputRef.current.value));
-      // data.append("hotelRef", hotelRefInputRef.current.value);
-      // data.append("TransportName", transportNameInputRef.current.value);
-      // data.append("TransportRef", transportRefInputRef.current.value);
-      // data.append(
-      //   "TransportCost",
-      //   parseInt(transportCostInputRef.current.value)
-      // );
-      for (const [key, value] of data) {
-        console.log(key, value);
-      }
-      // console.log(data.entries());
       toast.success("Review Updated Scuessfully");
       try {
         await fetch(
@@ -127,32 +61,12 @@ export default function UpdateReview(props) {
             body: data,
             headers: {
               Authorization: "Bearer " + localStorage.getItem("token"),
-              // Authorization:
-              //   "Bearer " +
-              //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiaGFzYW4iLCJlbWFpbCI6Imhhc2FuQGdtYWlsLmNvbSIsInJvbGUiOiJOT1JNQUxfVVNFUl9ST0xFIiwiaWF0IjoxNjYwNDA5OTU5LCJleHAiOjE2NjA0MTM1NTl9.4GxT3Qbs49qO71ZnOm0RWWJDpfNHIT6rMuGnKQBRjVs",
-              // "Content-Type": "multipart/form-data; boundary=meri-boundary",
             },
           }
         );
       } catch (error) {
         console.log(error);
       }
-
-      // {
-      //   Title: enteredTitle,
-      //   Place: enteredPlace,
-      //   Rating: Ratingvalue,
-      //   Experience: enteredDescription,
-      //   start_date: enteredDate,
-      //   Images: enteredImage,
-      //   Hotel_name: enteredhotelName,
-      //   Hotel_cost: enteredhotelCost,
-      //   Hotel_refno: enteredhotelRef,
-      //   Transport_name: enteredTransportName,
-      //   Transport_refno: enteredTransportRef,
-      //   Transport_cost: enteredTransportCost,
-      // },
-      // {
     } else {
       toast.info("Sorry you are not authenticated");
     }
@@ -179,13 +93,11 @@ export default function UpdateReview(props) {
                 <input
                   type="text"
                   defaultValue={review.Title}
-                  //   onChange={(e) => e.target.value}
                   required
                   id="title"
                   name="Title"
                   placeholder="Enter title for your review"
                   className="w-[70%] border border-gray-400 px-3 py-2 rounded-lg shadow-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 placeholder:text-md"
-                  ref={titleInputRef}
                 />
               </div>
               <div className="m-5">
@@ -200,7 +112,6 @@ export default function UpdateReview(props) {
                   name="Place"
                   placeholder="Enter the place you have travelled"
                   className="w-[70%] border border-gray-400 px-3 py-2 rounded-lg shadow-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                  ref={placeInputRef}
                 />
               </div>
               <div className="m-5">
@@ -254,7 +165,6 @@ export default function UpdateReview(props) {
                   rows="10"
                   placeholder="Please tell us about your experience of your journey: describe the place or activity, recommendations for travellers?"
                   className="w-[70%] border border-gray-400 px-3 py-2 rounded-lg shadow-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                  ref={descriptionInputRef}
                 />
               </div>
               <div className="m-5">
@@ -269,7 +179,6 @@ export default function UpdateReview(props) {
                   name="start_date"
                   placeholder="Pick the date when you travelled"
                   className="w-[70%] border border-gray-400 px-3 py-2 rounded-lg shadow-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                  ref={dateInputRef}
                 />
               </div>
               <div className="m-5">
@@ -278,10 +187,9 @@ export default function UpdateReview(props) {
                 </label>
                 <input
                   type="file"
-                  // required
+                  required
                   multiple
                   id="upload"
-                  //   defaultValue={review.Images}
                   name="Images"
                   className="block w-full text-sm text-slate-500
       file:mr-4 file:py-2 file:px-4
@@ -289,20 +197,8 @@ export default function UpdateReview(props) {
       file:text-sm file:font-semibold
       file:bg-violet-50 file:text-violet-700
       hover:file:bg-violet-100"
-                  ref={imageInputRef}
-                  // onChange={fileSelectHandler}
                 />
-                {/* <button
-              type="button"
-              onClick={fileUploadHandler}
-              className="mt-3 bg-violet-50 text-violet-700 font-semibold text-md rounded-full py-2 px-4 hover:bg-violet-100"
-            >
-              Upload
-            </button> */}
               </div>
-              {/* {imageUrls.map((url) => {
-            return <img src={url} className="w-1/5  m-10" />;
-          })} */}
             </div>
 
             <div className="w-1/2">
@@ -321,7 +217,6 @@ export default function UpdateReview(props) {
                     name="Hotel_name"
                     placeholder="Name of Hotel"
                     className="w-[70%] border border-gray-400 px-3 py-2 rounded-lg shadow-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                    ref={hotelNameInputRef}
                   />
                 </div>
                 <div className="mb-5">
@@ -329,13 +224,12 @@ export default function UpdateReview(props) {
                     Cost of stay per night
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     defaultValue={review.Hotel_cost}
                     id="costofstay"
                     name="Hotel_cost"
                     placeholder="Rs"
                     className="w-[70%] border border-gray-400 px-3 py-2 rounded-lg shadow-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                    ref={hotelCostInputRef}
                   />
                 </div>
                 <div className="mb-5">
@@ -349,7 +243,6 @@ export default function UpdateReview(props) {
                     name="Hotel_refno"
                     placeholder="+92"
                     className="w-[70%] border border-gray-400 px-3 py-2 rounded-lg shadow-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                    ref={hotelRefInputRef}
                   />
                 </div>
                 {/* <button className="bg-[#FFA902] hover:bg-[#fac251] text-black p-5 rounded-lg text-lg font-semibold right-1">
@@ -374,7 +267,6 @@ export default function UpdateReview(props) {
                     name="Transport_name"
                     placeholder="Enter name of the transportation service you availed"
                     className="w-[70%] border border-gray-400 px-3 py-2 rounded-lg shadow-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                    ref={transportNameInputRef}
                   />
                 </div>
                 <div className="mb-5">
@@ -382,13 +274,12 @@ export default function UpdateReview(props) {
                     Reference number of transportation service (if any)
                   </label>
                   <input
-                    type="number"
+                    type="text"
                     id="reftransport"
                     defaultValue={review.Transport_refno}
                     name="Transport_refno"
                     placeholder="+92"
                     className="w-[70%] border border-gray-400 px-3 py-2 rounded-lg shadow-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                    ref={transportRefInputRef}
                   />
                 </div>
                 <div className="mb-5">
@@ -405,12 +296,8 @@ export default function UpdateReview(props) {
                     name="Transport_cost"
                     placeholder="Rs"
                     className="w-[70%] border border-gray-400 px-3 py-2 rounded-lg shadow-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                    ref={transportCostInputRef}
                   />
                 </div>
-                {/* <button className=" bg-[#FFA902] hover:bg-[#fac251] text-black p-5 rounded-lg text-lg font-semibold mb-5">
-              Add Transportation
-            </button> */}
               </div>
               <button
                 type="Submit"

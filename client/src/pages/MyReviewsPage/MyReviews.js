@@ -111,7 +111,22 @@ export default function MyReviews() {
                   >
                     To Favourite
                   </button>
-                  <button className="text-[#ff3358] text-lg rounded-md p-2 px-7 drop-shadow-xl font-semibold  border-2 border-[#ff3358] hover:text-white hover:bg-[#ff3358]">
+                  <button
+                    onClick={async () => {
+                      await custom_axios.delete(
+                        ApiConstants.REVIEW.DELETE(myReview.id),
+                        {
+                          headers: {
+                            Authorization:
+                              "Bearer " + localStorage.getItem("token"),
+                          },
+                        }
+                      );
+                      toast.success("Review deleted");
+                      window.location.reload(false);
+                    }}
+                    className="text-[#ff3358] text-lg rounded-md p-2 px-7 drop-shadow-xl font-semibold  border-2 border-[#ff3358] hover:text-white hover:bg-[#ff3358]"
+                  >
                     Delete
                   </button>
                 </div>

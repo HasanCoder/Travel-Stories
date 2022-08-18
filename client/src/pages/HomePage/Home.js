@@ -12,11 +12,15 @@ export default function Home() {
   const [reviews, setReviews] = useState([]);
 
   const getAllReviews = async () => {
-    const response = await custom_axios.get(
-      ApiConstants.REVIEW.GET_ALL_REVIEWS,
-      { headers: { Authorization: "Bearer " + localStorage.getItem("token") } }
-    );
-    setReviews(response.data);
+    try {
+      const response = await custom_axios.get(
+        ApiConstants.REVIEW.GET_ALL_REVIEWS,
+        {
+          headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+        }
+      );
+      setReviews(response.data);
+    } catch (error) {}
   };
 
   useEffect(() => {
