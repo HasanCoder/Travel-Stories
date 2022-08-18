@@ -103,8 +103,9 @@ export default function NewReview(props) {
       // console.log(data.entries());
       try {
         await fetch(
-          (process.env.REACT_APP_BASE_URL ||
-            "https://travel-stories-1.herokuapp.com") +
+          (process.env.REACT_APP_BASE_URL
+            ? process.env.REACT_APP_BASE_URL
+            : "https://travel-stories-1.herokuapp.com") +
             "/api" +
             `${ApiConstants.REVIEW.ADD_REVIEW(userId)}`,
           {

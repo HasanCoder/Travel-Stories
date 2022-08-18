@@ -117,8 +117,9 @@ export default function UpdateReview(props) {
       toast.success("Review Updated Scuessfully");
       try {
         await fetch(
-          (process.env.REACT_APP_BASE_URL ||
-            "https://travel-stories-1.herokuapp.com") +
+          (process.env.REACT_APP_BASE_URL
+            ? process.env.REACT_APP_BASE_URL
+            : "https://travel-stories-1.herokuapp.com") +
             "/api" +
             `${ApiConstants.REVIEW.UPDATE_REVIEW(id)}`,
           {
