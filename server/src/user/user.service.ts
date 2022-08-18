@@ -19,15 +19,6 @@ export class UserService {
     return this.userRepository.save(user);
   }
 
-  createAdmin(createUserDto: CreateUserDto) {
-    let user: User = new User();
-    user.username = createUserDto.username;
-    user.email = createUserDto.email;
-    user.password = createUserDto.password;
-    user.role = Constants.ROLES.ADMIN_ROLE;
-    return this.userRepository.save(user);
-  }
-
   findAll() {
     return this.userRepository.find();
   }
