@@ -16,7 +16,6 @@ import {
 import { ReviewService } from './review.service';
 import { CreateReviewDto } from './dto/create-review.dto';
 import { UpdateReviewDto } from './dto/update-review.dto';
-import { ObjectID } from 'typeorm';
 import { threadId } from 'worker_threads';
 import { ApiSecurity, ApiTags } from '@nestjs/swagger';
 import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';

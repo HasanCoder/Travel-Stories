@@ -116,17 +116,22 @@ export default function UpdateReview(props) {
       // console.log(data.entries());
       toast.success("Review Updated Scuessfully");
       try {
-        await fetch(`/${ApiConstants.REVIEW.UPDATE_REVIEW(id)}`, {
-          method: "PATCH",
-          body: data,
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-            // Authorization:
-            //   "Bearer " +
-            //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiaGFzYW4iLCJlbWFpbCI6Imhhc2FuQGdtYWlsLmNvbSIsInJvbGUiOiJOT1JNQUxfVVNFUl9ST0xFIiwiaWF0IjoxNjYwNDA5OTU5LCJleHAiOjE2NjA0MTM1NTl9.4GxT3Qbs49qO71ZnOm0RWWJDpfNHIT6rMuGnKQBRjVs",
-            // "Content-Type": "multipart/form-data; boundary=meri-boundary",
-          },
-        });
+        await fetch(
+          (process.env.baseURL || "http://localhost:3000") +
+            "/api" +
+            `${ApiConstants.REVIEW.UPDATE_REVIEW(id)}`,
+          {
+            method: "PATCH",
+            body: data,
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("token"),
+              // Authorization:
+              //   "Bearer " +
+              //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiaGFzYW4iLCJlbWFpbCI6Imhhc2FuQGdtYWlsLmNvbSIsInJvbGUiOiJOT1JNQUxfVVNFUl9ST0xFIiwiaWF0IjoxNjYwNDA5OTU5LCJleHAiOjE2NjA0MTM1NTl9.4GxT3Qbs49qO71ZnOm0RWWJDpfNHIT6rMuGnKQBRjVs",
+              // "Content-Type": "multipart/form-data; boundary=meri-boundary",
+            },
+          }
+        );
       } catch (error) {
         console.log(error);
       }

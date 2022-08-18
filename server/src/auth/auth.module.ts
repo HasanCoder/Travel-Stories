@@ -16,7 +16,7 @@ import { JwtStrategy } from './startegy/jwt.strategy';
       useFactory: (configService: ConfigService) => ({
         secret: configService.get('JWT_KEY'),
         signOptions: {
-          expiresIn: configService.get<string>('JWT_EXPIRE') + 's',
+          expiresIn: configService.get<string>('JWT_EXPIRE') + 'd',
         },
       }),
     }),

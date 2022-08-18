@@ -143,7 +143,7 @@ export default function Blog(props) {
           </div>
           <img
             className=" w-full h-2/3"
-            src={`https://storage.googleapis.com/travel-stories-74648.appspot.com/images/${blog.Images[0]}`}
+            src={`${process.env.REACT_APP_IMAGE_BASE_URL}${blog.Images[0]}`}
             alt={blog.title}
             loading="lazy"
           ></img>
@@ -170,7 +170,7 @@ export default function Blog(props) {
             {blog.Images?.map((image, index) =>
               index !== 0 ? (
                 <img
-                  src={`https://storage.googleapis.com/travel-stories-74648.appspot.com/images/${image}`}
+                  src={`${process.env.REACT_APP_IMAGE_BASE_URL}${image}`}
                   className="m-5"
                   alt="not uploaded"
                 />

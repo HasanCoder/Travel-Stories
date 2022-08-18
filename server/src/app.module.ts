@@ -6,26 +6,32 @@ import { ReviewModule } from './review/review.module';
 import { AuthModule } from './auth/auth.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '../..', 'client/build')
+      rootPath: join(__dirname, '../..', 'client/build'),
     }),
-    ConfigModule.forRoot({ isGlobal: true, envFilePath: ['.local.env'] }),
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: (configService: ConfigService) => ({
-        type: 'postgres',
-        host: configService.get('DATABASE_HOST'),
-        port: configService.get<number>('DATABASE_PORT'),
-        username: configService.get('DATABASE_USERNAME'),
-        password: configService.get('DATABASE_PASSWORD'),
-        synchronize: configService.get<boolean>('DATABASE_SYNC'),
-        logging: configService.get<boolean>('DATABASE_LOGGING'),
-        database: configService.get('DATABASE_NAME'),
-        entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      }),
+    ConfigModule.forRoot({ isGlobal: true, envFilePath: ['.env'] }),
+    TypeOrmModule.forRoot({
+      url: process.env.DATABASE_URL,
+      type: 'postgres',
+      // ssl: {
+      //   rejectUnauthorized: false,
+      // },
+      synchronize: true, // This for development
+      autoLoadEntities: true,
+      // useFactory: (configService: ConfigService) => ({
+      //   type: 'postgres',
+      //   name: connectionOptions.name,
+      //   host: connectionOptions.host,
+      //   port: connectionOptions.port,
+      //   username: connectionOptions.username,
+      //   password: connectionOptions.password,
+      //   database: connectionOptions.database,
+      //   synchronize: true,
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      // }),
     }),
     UserModule,
     ReviewModule,

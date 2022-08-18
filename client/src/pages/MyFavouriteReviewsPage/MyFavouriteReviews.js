@@ -43,17 +43,17 @@ export default function MyFavouriteReviews() {
         return (
           <div className="post">
             <Card>
-              <img
-                className="postImg"
-                src={`https://storage.googleapis.com/travel-stories-74648.appspot.com/images/${myFavouriteReview.Images[0]}`}
-                alt={myFavouriteReview.title}
-              ></img>
               <Link
                 to={`/blog/${myFavouriteReview.id}`}
                 onClick={() =>
                   sessionStorage.setItem("scrollPosition", window.pageYOffset)
                 }
               >
+                <img
+                  className="postImg"
+                  src={`${process.env.REACT_APP_IMAGE_BASE_URL}${myFavouriteReview.Images[0]}`}
+                  alt={myFavouriteReview.title}
+                ></img>
                 <div className="postInfo">
                   <div className="postTitle font-semibold text-2xl px-5 py-2">
                     {myFavouriteReview.Title}

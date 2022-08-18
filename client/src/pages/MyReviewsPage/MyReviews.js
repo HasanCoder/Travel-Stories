@@ -41,11 +41,6 @@ export default function MyReviews() {
         return (
           <div className="post">
             <Card>
-              <img
-                className="postImg"
-                src={`https://storage.googleapis.com/travel-stories-74648.appspot.com/images/${myReview.Images[0]}`}
-                alt={myReview.title}
-              ></img>
               <div className="postInfo">
                 <Link
                   to={`/blog/${myReview.id}`}
@@ -53,6 +48,11 @@ export default function MyReviews() {
                     sessionStorage.setItem("scrollPosition", window.pageYOffset)
                   }
                 >
+                  <img
+                    className="postImg"
+                    src={`${process.env.REACT_APP_IMAGE_BASE_URL}${myReview.Images[0]}`}
+                    alt={myReview.title}
+                  ></img>
                   <div className="postTitle font-semibold text-2xl px-5 py-2">
                     {myReview.Title}
                   </div>

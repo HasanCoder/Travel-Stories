@@ -43,7 +43,7 @@ export default function SinglePost(props) {
         >
           <img
             className="postImg"
-            src={`https://storage.googleapis.com/travel-stories-74648.appspot.com/images/${props.images[0]}`}
+            src={`${process.env.REACT_APP_IMAGE_BASE_URL}${props.images[0]}`}
             alt={props.title}
           ></img>
           <div className="postTitle font-semibold text-2xl px-5 py-2">
