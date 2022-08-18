@@ -43,32 +43,33 @@ export default function NewReview(props) {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    const enteredTitle = titleInputRef.current.value;
-    const enteredPlace = placeInputRef.current.value;
-    const enteredDescription = descriptionInputRef.current.value;
-    const enteredDate = dateInputRef.current.value;
-    const enteredImage = imageInputRef.current.files[0];
-    const enteredhotelName = hotelNameInputRef.current.value;
-    const enteredhotelCost = parseInt(hotelCostInputRef.current.value);
-    const enteredhotelRef = hotelRefInputRef.current.value;
-    const enteredTransportName = transportNameInputRef.current.value;
-    const enteredTransportRef = transportRefInputRef.current.value;
-    const enteredTransportCost = parseInt(transportCostInputRef.current.value);
+    toast.success("Review Submitted Scuessfully");
+    // const enteredTitle = titleInputRef.current.value;
+    // const enteredPlace = placeInputRef.current.value;
+    // const enteredDescription = descriptionInputRef.current.value;
+    // const enteredDate = dateInputRef.current.value;
+    // const enteredImage = imageInputRef.current.files[0];
+    // const enteredhotelName = hotelNameInputRef.current.value;
+    // const enteredhotelCost = parseInt(hotelCostInputRef.current.value);
+    // const enteredhotelRef = hotelRefInputRef.current.value;
+    // const enteredTransportName = transportNameInputRef.current.value;
+    // const enteredTransportRef = transportRefInputRef.current.value;
+    // const enteredTransportCost = parseInt(transportCostInputRef.current.value);
 
-    const ReviewData = {
-      Title: enteredTitle,
-      Place: enteredPlace,
-      Rating: Ratingvalue,
-      Experience: enteredDescription,
-      start_date: enteredDate,
-      Images: enteredImage,
-      Hotel_name: enteredhotelName,
-      Hotel_cost: enteredhotelCost,
-      Hotel_refno: enteredhotelRef,
-      Transport_name: enteredTransportName,
-      Transport_refno: enteredTransportRef,
-      Transport_cost: enteredTransportCost,
-    };
+    // const ReviewData = {
+    //   Title: enteredTitle,
+    //   Place: enteredPlace,
+    //   Rating: Ratingvalue,
+    //   Experience: enteredDescription,
+    //   start_date: enteredDate,
+    //   Images: enteredImage,
+    //   Hotel_name: enteredhotelName,
+    //   Hotel_cost: enteredhotelCost,
+    //   Hotel_refno: enteredhotelRef,
+    //   Transport_name: enteredTransportName,
+    //   Transport_refno: enteredTransportRef,
+    //   Transport_cost: enteredTransportCost,
+    // };
 
     // console.log(imageUrls);
     // props.onAddReview(ReviewData);
@@ -139,7 +140,6 @@ export default function NewReview(props) {
       //   Transport_cost: enteredTransportCost,
       // },
       // {
-      toast.success("Review Submitted Scuessfully");
     } else {
       toast.info("Sorry you are not authenticated");
     }
