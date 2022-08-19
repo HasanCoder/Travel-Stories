@@ -1,14 +1,14 @@
-# nest-react-heroku boilerplate
-Full stack TypeScript web application, deploys to Heroku out of the box. Use it to serve a static react website, or add a database and API. Up to you!
+# Travel Stories
+Full stack TypeScript web application, deployed to Heroku out of the box.
 
 ### [Nest](https://nestjs.com/)
 Is a TypeScript Node framework based on Express. Well documented and uses the latest syntax.
 
 ### [React](https://reactjs.org/)
-Well... you probably know what React is already. This project uses TypeScript for React.
+Well... you probably know what React is already. 
 
 ## Quick start:
-1. ```git clone https://github.com/nathan-folsom/nest-react-heroku.git```
+1. ```clone this repo```
 1. ```cd nest-react-heroku```
 1. ```heroku login```
 1. ```heroku create <name(optional)>```
