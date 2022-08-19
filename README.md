@@ -1,6 +1,9 @@
 # Travel Stories
 Full stack TypeScript web application, deployed to Heroku out of the box.
 
+You can view this website here:
+https://travel-stories-1.herokuapp.com/
+
 ### [Nest](https://nestjs.com/)
 Is a TypeScript Node framework based on Express. Well documented and uses the latest syntax.
 
